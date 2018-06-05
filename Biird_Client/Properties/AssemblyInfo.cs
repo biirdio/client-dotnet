@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Biird-client .net 3.5")]
+[assembly: AssemblyTitle("Biird_Client")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Biird-client .net 3.5")]
+[assembly: AssemblyProduct("Biird_Client")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a704c765-e4f9-4f62-b479-beee043803fd")]
+[assembly: Guid("06cf66d8-90ec-4f4b-a267-9675d2472091")]
 
 // Version information for an assembly consists of the following four values:
 //
