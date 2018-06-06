@@ -42,16 +42,18 @@ namespace Biird_Client
             {
                 _languageCode = code[0];
             }
+            
         }
 
         public string DefaultLanguageDimentions()
         {
-            biirdBaseDimensions.Add("en","language"); // for test purposes
+            biirdBaseDimensions.Add("de","language"); // for test purposes
             return _languageCode;
         }
 
         public static string fetch(string id){
             Entity currentEntity;
+            Biird.Shared.DefaultLanguageDimentions();
             using (var wb = new WebClient())
             {
                 
@@ -68,6 +70,7 @@ namespace Biird_Client
                     }
                     i++;
                 }
+                 Console.WriteLine(BiirdClient.resourceValueURL + id + parameters);
                 // string finalString = "https://api.biird.io/resourceValue/b9fb0f44-31d5-45df-9ec3-776568802c31?language=en";
                 // string param = "?language=en";
                 var response = wb.DownloadString(BiirdClient.resourceValueURL + id + parameters);
