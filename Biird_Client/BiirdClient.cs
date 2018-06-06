@@ -3,13 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Globalization;
+using System.Net;
+
 namespace Biird_Client
 {
     public class BiirdClient
     {
         public static readonly string URL = "https://api.biird.io/";
-        public static readonly string resourceValueURL  = "https://api.biird.io/resourceValue/0";
+        public static readonly string resourceValueURL  = "https://api.biird.io/resourceValue/";
 
+        public static string fetch(string id){
+            Entity currentEntity;
+            using (var wb = new WebClient())
+            {
+
+                var response = wb.DownloadString(BiirdClient.resourceValueURL+id);
+                currentEntity = new Entity(response);
+                Console.WriteLine(currentEntity);
+                return response;
+            }
+          
+           
+
+        }
     
     }
 
