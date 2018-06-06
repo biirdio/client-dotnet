@@ -11,21 +11,6 @@ namespace Biird_Client
     {
         public static readonly string URL = "https://api.biird.io/";
         public static readonly string resourceValueURL  = "https://api.biird.io/resourceValue/";
-
-        public static string fetch(string id){
-            Entity currentEntity;
-            using (var wb = new WebClient())
-            {
-
-                var response = wb.DownloadString(BiirdClient.resourceValueURL+id);
-                currentEntity = new Entity(response);
-                Console.WriteLine(currentEntity);
-                return response;
-            }
-          
-           
-
-        }
     
     }
 
@@ -44,6 +29,7 @@ namespace Biird_Client
         public static Biird Shared = new Biird();
         private string _languageCode;
         private string _countryCode;
+        private Dictionary<string, string> biirdBaseDimensions = new Dictionary<string, string>();
         public Biird()
         {
             string[] code = CultureInfo.CurrentCulture.Name.Split('-');
@@ -60,7 +46,38 @@ namespace Biird_Client
 
         public string DefaultLanguageDimentions()
         {
+            biirdBaseDimensions.Add("en","language"); // for test purposes
             return _languageCode;
+        }
+
+        public static string fetch(string id){
+            Entity currentEntity;
+            using (var wb = new WebClient())
+            {
+                
+                string parameters = "?";
+                
+                // key is the language code, values are the attribute 
+                int i = 0;
+
+                // add all attributes and its values to the parameters
+                foreach(string key in Shared.biirdBaseDimensions.Keys){
+                    parameters += Shared.biirdBaseDimensions[key] + "=" + key;
+                    if( i < Shared.biirdBaseDimensions.Keys.Count-1){
+                        parameters += "&";
+                    }
+                    i++;
+                }
+                // string finalString = "https://api.biird.io/resourceValue/b9fb0f44-31d5-45df-9ec3-776568802c31?language=en";
+                // string param = "?language=en";
+                var response = wb.DownloadString(BiirdClient.resourceValueURL + id + parameters);
+                currentEntity = new Entity(response);
+                Console.WriteLine(currentEntity.Data);
+                return response;
+            }
+          
+           
+
         }
 
     }
