@@ -29,10 +29,20 @@ namespace Biird_Client
         public static Biird Shared = new Biird();
         private string _languageCode;
         private string _countryCode;
+
+        /// <summary>
+        ///  Dictionary of Dimensions.
+        /// </summary>
+        /// <param name="key"> Language Code. </param>
+        /// <param name="value"> Attribute, example: language </param>
         private Dictionary<string, string> biirdBaseDimensions = new Dictionary<string, string>();
         public Biird()
         {
             string[] code = CultureInfo.CurrentCulture.Name.Split('-');
+            // TO DO :
+            //       - call the default dimensions
+            Biird.Shared.DefaultLanguageDimentions();
+
             if(code.Length == 2)
             {
                 _languageCode = code[0];
@@ -50,16 +60,18 @@ namespace Biird_Client
             biirdBaseDimensions.Add("de","language"); // for test purposes
             return _languageCode;
         }
-
+        
+        /// <summary>
+        ///  Call fetch to connect to the API
+        /// </summary>
+        /// <param name="id"> Id for the current item.</param>
         public static string fetch(string id){
             Entity currentEntity;
-            Biird.Shared.DefaultLanguageDimentions();
+            
             using (var wb = new WebClient())
             {
                 
                 string parameters = "?";
-                
-                // key is the language code, values are the attribute 
                 int i = 0;
 
                 // add all attributes and its values to the parameters
@@ -70,9 +82,9 @@ namespace Biird_Client
                     }
                     i++;
                 }
-                 Console.WriteLine(BiirdClient.resourceValueURL + id + parameters);
+
+                // Console.WriteLine(BiirdClient.resourceValueURL + id + parameters);
                 // string finalString = "https://api.biird.io/resourceValue/b9fb0f44-31d5-45df-9ec3-776568802c31?language=en";
-                // string param = "?language=en";
                 var response = wb.DownloadString(BiirdClient.resourceValueURL + id + parameters);
                 currentEntity = new Entity(response);
                 Console.WriteLine(currentEntity.Data);
