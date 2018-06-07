@@ -41,7 +41,7 @@ namespace Biird_Client
             string[] code = CultureInfo.CurrentCulture.Name.Split('-');
             // TO DO :
             //       - call the default dimensions
-            Biird.Shared.DefaultLanguageDimentions();
+            Shared.DefaultLanguageDimentions();
 
             if(code.Length == 2)
             {
