@@ -27,9 +27,10 @@ biird.io Automatic translation and more
 - If you **want to contribute**, submit a pull request.
 
 ## Installation
-
-Simple download a script into your root folder.
-
+1. Download the Biird_Client.dll file.
+2. Link dll file to your project
+3. Use `Biird.Init();` to initialize the plugin.
+4. Use `Biird.Fetch(YOUR_ID);` to fetch string. 
 ## FAQ
 
 ### What's the origin of the name biird.io?
