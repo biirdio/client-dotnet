@@ -12,11 +12,12 @@ biird.io Automatic translation and more
 
 ## Features
 
-- [x] Download File using simple fetch 
+- Download File using simple fetch 
 
 ## Requirements
 
-- dotnet compiler
+- .NET compiler
+- .NET 3.5 and above
 
 ## Communication
 
@@ -29,8 +30,10 @@ biird.io Automatic translation and more
 ## Installation
 1. Download the Biird_Client.dll file.
 2. Link dll file to your project
-3. Use `Biird.Init();` to initialize the plugin.
-4. Use `Biird.Fetch(YOUR_ID);` to fetch string. 
+3. Include Biird namespace to your code `using Biird_Client;` 
+4. Use `Biird.Init();` to initialize the plugin.
+5. Use `Biird.Fetch(YOUR_ID);` to fetch string. 
+6. Waiting for new features and improvements ;)
 ## FAQ
 
 ### What's the origin of the name biird.io?
